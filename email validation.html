@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation</title>
+    <link rel="stylesheet" href="css/validation.css">
+</head>
+<body>
+    <section>
+        <h3>Email validation check</h3>
+        <form action="#" id="form">
+            <div class="inputBox">
+                <input type="text" name="" id="email" placeholder="Email address" onkeydown="validation();">
+                <span id="text"></span>
+            </div>
+        </form>
+    </section>
+
+    <script>
+        function validation() {
+            let form = document.getElementById('form');
+            let email = document.getElementById('email').value;
+            let text = document.getElementById('text');
+
+            let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+            if (email.match(pattern)) {
+                form.classList.add('valid');
+                form.classList.remove('invalid');
+                text.innerHTML = "Email address is valid.";
+                text.style.color = '#00ff00';
+            } else {
+                form.classList.remove('valid');
+                form.classList.add('invalid');
+                text.innerHTML = "Invalid email address"
+                text.style.color = '#ff0000';
+            }
+            if (email == "") {
+                form.classList.remove('valid');
+                form.classList.remove('invalid');
+                text.innerHTML = "";
+                text.style.color = "#00ff00";
+            }
+        }
+    </script>
+</body>
+</html>
